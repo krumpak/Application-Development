@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Aplikacija</title>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			font-family: sans-serif;
+			font-size: 16px;
+		}
+		#naprava {
+			background-size: contain;
+			background-position: top center;
+			margin: 0 auto;
+			background-repeat: no-repeat;
+			box-sizing: border-box;
+			margin-top: 10px
+		}
+		.ipad-landscape {
+			width: 103em;
+			height: 72.875em;
+			background-image: url('./img/ipad-landscape.png');
+			padding: 1.875em 8.75em 1.875em 9.375em;
+		}
+		.ipad-portrait {
+			width: 72.875em;
+			height: 103em;
+			background-image: url('./img/ipad-portrait.png');
+			padding: 8.75em 1.875em 9.375em 1.875em;
+		}
+		.android-portrait {
+			width: 37.9375em;
+			height: 75.375em;
+			background-image: url('./img/android-portrait.png');
+			padding: 9.36em 1.875em 5em 1.875em;
+		}
+		.android-landscape {
+			width: 75.375em;
+			height: 37.9375em;
+			background-image: url('./img/android-landscape.png');
+			padding: 1.875em 9.36em 1.875em 5em;
+		}
+		.iphone6p-portrait {
+			width: 35.6875em;
+			height: 72.75em;
+			background-image: url('./img/iphone6p-portrait.png');
+			padding: 8.125em 1.875em 9.375em 1.875em;
+		}
+		.iphone6p-landscape {
+			width: 72.75em;
+			height: 35.6875em;
+			background-image: url('./img/iphone6p-landscape.png');
+			padding: 1.875em 8.125em 1.875em 9.375em;
+		}
+		.iwatch-portrait {
+			width: 19.5625em;
+			height: 34.25em;
+			background-image: url('./img/iwatch-portrait.png');
+			padding: 9.375em 4.0625em 9.375em 2.8125em;
+		}
+		.iwatch-landscape {
+			width: 34.25em;
+			height: 19.5625em;
+			background-image: url('./img/iwatch-landscape.png');
+			padding: 2.8125em 9.375em 4.0625em 9.375em;
+		}
+		#vsebina {
+			width: 100%;
+			height: 100%;
+			overflow-y: auto;
+			box-sizing: border-box;
+			-moz-box-shadow: inset 0 -1px 1px 2px rgba(0,0,0,0.5);
+			-webkit-box-shadow: inset 0 -1px 1px 2px rgba(0,0,0,0.5);
+			box-shadow: inset 0 -1px 1px 2px rgba(0,0,0,0.5);
+		}
+		#portrait, #landscape, #landscape-lbl, .preloader {
+			display: none;
+		}
+		#stikala {
+			position: fixed;
+			top: 0;
+			right: 0;
+			padding: 5px 4px;
+			background-color: white;
+			border-bottom-left-radius: 3px;
+			box-shadow:-1px 1px 3px 1px rgba(51,51,51, 0.75);
+			text-rendering: optimizeLegibility !important;
+			-webkit-font-smoothing: antialiased !important;
+			z-index: 999;
+		}
+		#stikala > * {
+			cursor: pointer;
+		}
+	</style>
+	<style>
+		#vsebina {
+			background-color: rgba(125,125,125,0.5);
+			color: white;
+			padding: 10px;
+			text-align: center;
+		}
+	</style>
+	<script>
+		function $$(id){
+			return document.getElementById(id);
+		}
+		function zamenjajSlog(vrsta) {
+			var rotacija, naprave, list = ['android','ipad','iphone6p','iwatch'], velikost;
+			if ( localStorage.getItem("naprave") == undefined || localStorage.getItem("rotacija") == undefined || localStorage.getItem("velikost") == undefined ) {
+				naprave = "0";
+				rotacija = "landscape";
+				veliskot = "16";
+				localStorage.setItem("naprave", naprave);
+				localStorage.setItem("rotacija", rotacija);
+				localStorage.setItem("velikost", 16);
+			} else {
+				if( vrsta == 'rotacijo' ){
+					rotacija = localStorage.getItem("rotacija");
+					if( rotacija == 'landscape' ){
+						localStorage.setItem("rotacija", "portrait");
+						$$("landscape").checked = true;
+					}else{
+						localStorage.setItem("rotacija", "landscape");
+						$$("portrait").checked = true;
+					}
+				}else if( vrsta == 'napravo' ){
+					naprave = $$("naprave").value;
+					localStorage.setItem("naprave", naprave);
+				}else if( vrsta == 'pomanjsaj' ){
+					if( localStorage.getItem("velikost") > 2 ){
+						velikost = ( localStorage.getItem("velikost") * 1 ) - 2;
+						localStorage.setItem("velikost", velikost);
+					}
+				}else if( vrsta == 'povecaj' ){
+					if( localStorage.getItem("velikost") < 30 ){
+						velikost = ( localStorage.getItem("velikost") * 1 ) + 2;
+						localStorage.setItem("velikost", velikost);
+					}
+				}else if( vrsta == 'reset' ){
+					velikost = '16';
+					localStorage.setItem("velikost", velikost);
+				}
+				rotacija = localStorage.getItem("rotacija");
+				naprave = localStorage.getItem("naprave");
+			}
+			$$('naprave').getElementsByTagName('option')[naprave].selected = 'selected';
+			$$("naprava").className = ( list[naprave] + '-' + rotacija );
+			$$('naprava').style.fontSize = localStorage.getItem("velikost")+'px';
+		}
+	</script>
+</head>
+<body onload="zamenjajSlog('reload')">
+	<div id="stikala">
+		<select id="naprave" onchange="zamenjajSlog('napravo')">
+			<option value="0">Android</option>
+			<option value="1">iPad</option>
+			<option value="2">iPhone6+</option>
+			<option value="3">iWatch</option>
+		</select>
+		  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAAGTn9/DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzcwN0YwQjAzQzczMTFFNjhDNDRDRDE1MzFBM0FFMTMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzcwN0YwQjEzQzczMTFFNjhDNDRDRDE1MzFBM0FFMTMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDNzA3RjBBRTNDNzMxMUU2OEM0NENEMTUzMUEzQUUxMyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDNzA3RjBBRjNDNzMxMUU2OEM0NENEMTUzMUEzQUUxMyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkuTMHEAAAGHSURBVHjaYmBgYFjPAAXMQKwAxJpAbAEQQCCBbwxIIB0ggEBEOQMWsBeIm5EFAAIIhH4B8WVsqgOA2ADGYYTSu4F4HZTtDiIWoVn/FCCAQI7rBOLrQMwPxEFAzALEz9DNZwLidyAdQPwEiD8A8RmonB+6YmT//GfADt6BrFkLxD5A/BYq6AvEXEiK/gIxK0AAgRj/gPg51DRuHCaCvS0BxGxA/AUa6iCPfWcgAHSgdCA2X6PbAALHGXBIgIAlEAcD8V00NTxALMKCJOANDcvpaApFQOEMUrgciO8BsQA04LHZ+gekcCk0XkEeMYfGFDLgBeJHAAHGBHXTDyD+DMQXgPg1lP8BGlwkAZD1lUDcjkXOB+oKEyB+DLXgMMi5+AxkgcY0LrlPQDwJScwVmlKv4jKQCY9ln6DZCTn6DgGxMJIYDDMRMrAFmmH9kDI9CzQBH4OymaEYlIbFoEHygwVHFnkDjaznUP4fIuIDpF4c5MIoqKGghH8NGtPWQKwMtZkYALJQEYilAKufUELdad9jAAAAAElFTkSuQmCC" alt="portraite/landscape" onclick="zamenjajSlog('rotacijo')">
+  	<input type="radio" name="rotation" id="portrait" value="portrait"  checked>
+  	<input type="radio" name="rotation" id="landscape" value="landscape" onclick="zamenjajSlog('rotacijo')">
+
+  	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAANZJREFUeNpiYCANKADxfijuZ6ACaADi/0hYgVID76MZ2ECJYQFIBq2H0vcJaXJA0pSAJgcz5DwQGyCpC8Bn4HwkhefRIgMmXoDm/fW4DBOAKngPNew/1CXokSEAFSvAIsbAhGQgzIsLgHghlJ0PpeOh9AWoJaCg+YBFL9YYNEBzbQJazGLD8MhhRIqM/TiC4gPUgg9QF6IHEyxYHIH4AHpkrIeGVwNaBP3HkzPeQ+Xno0cGSuBiScgKRKQMARaodw9AvfMBTfEBqEEPoBgbmIhkmQNAgAEAz2BXkdQUtRwAAAAASUVORK5CYII=" onclick="zamenjajSlog('pomanjsaj')" alt="-">
+  	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAQAAAADWYbVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOhJREFUKM9tzz0vQwEUgOGnohWx2KSDkaWTNBgEU3dWBonBxmQRMZFY/Qprp4bJYJCIH0BF2HwuaNMPaRyDG+5N+m7PyRnOyfmvahTL3vsoVVlbV9daH2U6FEK46qNUA96EU6FnMtFFokwVIUxrCruJ5jSFnexiTbhFVairCTeJHtJrY7rCNhaEZ11hL1GY/b0NlhRwp6Slp66AeyUtHWxBDlyawYlhPSWPyqgZ0bMor63oAyaE8KKhoeFMJ6Un38Iqg9jAl32fCBVDf4ID41Yck/cqnP89dp0RR0JLkSkhbCbjrGBeCOs/Gnhx3I45LskAAAAASUVORK5CYII=" onclick="zamenjajSlog('reset')" alt="16px">
+  	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMZJREFUeNpiZMAO5gOxApSdCMQPGCgABkD8Hwk3MFAI5qMZeJ8SwwSA+D3UIGSDA8g1MAHJEFAYnoey1+NRl4DPQJgB+6H8AjQLYGA/kvh5YiIDZqsClshRQArb+1C2AcwQJiQD85HYH4DYAar5AlQsHk3dQiCeiCaHNTLw4QAkdQpIrn0PM4gRKZDnQ9kHcASHANTlAjiCDJQBFqBHBq4014/m0vPQiNmPJSJRIqOBiAh7j8WVyMGAYrsCEUnqPp7c1QAQYAA/G1l1WjcY+gAAAABJRU5ErkJggg==" onclick="zamenjajSlog('povecaj')" alt="+">
+		<img class="preloader" src='./img/android-portrait.png'>
+		<img class="preloader" src='./img/android-landscape.png'>
+		<img class="preloader" src='./img/ipad-portrait.png'>
+		<img class="preloader" src='./img/ipad-landscape.png'>
+		<img class="preloader" src='./img/iphone6p-portrait.png'>
+		<img class="preloader" src='./img/iphone6p-landscape.png'>
+		<img class="preloader" src='./img/iwatch-portrait.png'>
+		<img class="preloader" src='./img/iwatch-landscape.png'>
+	</div>
+	<div id="naprava">
+		<div id="vsebina">Lorem ipsum ...</div>
+	</div>
+</body>
+</html>
