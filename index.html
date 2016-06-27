@@ -6,98 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Aplikacija</title>
 	<style>
-		html, body {
-			margin: 0;
-			padding: 0;
-			width: 100%;
-			height: 100%;
-			font-family: sans-serif;
-			font-size: 16px;
-		}
-		#naprava {
-			background-size: contain;
-			background-position: top center;
-			margin: 0 auto;
-			background-repeat: no-repeat;
-			box-sizing: border-box;
-			margin-top: 10px
-		}
-		.ipad-landscape {
-			width: 103em;
-			height: 72.875em;
-			background-image: url('./img/ipad-landscape.png');
-			padding: 1.875em 8.75em 1.875em 9.375em;
-		}
-		.ipad-portrait {
-			width: 72.875em;
-			height: 103em;
-			background-image: url('./img/ipad-portrait.png');
-			padding: 8.75em 1.875em 9.375em 1.875em;
-		}
-		.android-portrait {
-			width: 37.9375em;
-			height: 75.375em;
-			background-image: url('./img/android-portrait.png');
-			padding: 9.36em 1.875em 5em 1.875em;
-		}
-		.android-landscape {
-			width: 75.375em;
-			height: 37.9375em;
-			background-image: url('./img/android-landscape.png');
-			padding: 1.875em 9.36em 1.875em 5em;
-		}
-		.iphone6p-portrait {
-			width: 35.6875em;
-			height: 72.75em;
-			background-image: url('./img/iphone6p-portrait.png');
-			padding: 8.125em 1.875em 9.375em 1.875em;
-		}
-		.iphone6p-landscape {
-			width: 72.75em;
-			height: 35.6875em;
-			background-image: url('./img/iphone6p-landscape.png');
-			padding: 1.875em 8.125em 1.875em 9.375em;
-		}
-		.iwatch-portrait {
-			width: 19.5625em;
-			height: 34.25em;
-			background-image: url('./img/iwatch-portrait.png');
-			padding: 9.375em 4.0625em 9.375em 2.8125em;
-		}
-		.iwatch-landscape {
-			width: 34.25em;
-			height: 19.5625em;
-			background-image: url('./img/iwatch-landscape.png');
-			padding: 2.8125em 9.375em 4.0625em 9.375em;
-		}
-		#vsebina {
-			width: 100%;
-			height: 100%;
-			overflow-y: auto;
-			box-sizing: border-box;
-			-moz-box-shadow: inset 0 -1px 1px 2px rgba(0,0,0,0.5);
-			-webkit-box-shadow: inset 0 -1px 1px 2px rgba(0,0,0,0.5);
-			box-shadow: inset 0 -1px 1px 2px rgba(0,0,0,0.5);
-		}
-		#portrait, #landscape, #landscape-lbl, .preloader {
-			display: none;
-		}
-		#stikala {
-			position: fixed;
-			top: 0;
-			right: 0;
-			padding: 5px 4px;
-			background-color: white;
-			border-bottom-left-radius: 3px;
-			box-shadow:-1px 1px 3px 1px rgba(51,51,51, 0.75);
-			text-rendering: optimizeLegibility !important;
-			-webkit-font-smoothing: antialiased !important;
-			z-index: 999;
-		}
-		#stikala > * {
-			cursor: pointer;
-		}
-	</style>
+		#naprava,#vsebina{box-sizing:border-box}body,html{margin:0;padding:0;width:100%;height:100%;font-family:sans-serif;font-size:16px}#naprava{background-size:contain;background-position:top center;margin:10px auto 0;background-repeat:no-repeat}.ipad-landscape{width:103em;height:72.875em;background-image:url(img/ipad-landscape.png);padding:1.875em 8.75em 1.875em 9.375em}.ipad-portrait{width:72.875em;height:103em;background-image:url(img/ipad-portrait.png);padding:8.75em 1.875em 9.375em}.android-portrait{width:37.9375em;height:75.375em;background-image:url(img/android-portrait.png);padding:9.36em 1.875em 5em}.android-landscape{width:75.375em;height:37.9375em;background-image:url(img/android-landscape.png);padding:1.875em 9.36em 1.875em 5em}.iphone6p-portrait{width:35.6875em;height:72.75em;background-image:url(img/iphone6p-portrait.png);padding:8.125em 1.875em 9.375em}.iphone6p-landscape{width:72.75em;height:35.6875em;background-image:url(img/iphone6p-landscape.png);padding:1.875em 8.125em 1.875em 9.375em}.iwatch-portrait{width:19.5625em;height:34.25em;background-image:url(img/iwatch-portrait.png);padding:9.375em 4.0625em 9.375em 2.8125em}.iwatch-landscape{width:34.25em;height:19.5625em;background-image:url(img/iwatch-landscape.png);padding:2.8125em 9.375em 4.0625em}#vsebina{width:100%;height:100%;overflow-y:auto;-moz-box-shadow:inset 0 -1px 1px 2px rgba(0,0,0,.5);-webkit-box-shadow:inset 0 -1px 1px 2px rgba(0,0,0,.5);box-shadow:inset 0 -1px 1px 2px rgba(0,0,0,.5)}#landscape,#landscape-lbl,#portrait,.preloader{display:none}#stikala{position:fixed;top:0;right:0;padding:5px 4px;background-color:#fff;border-bottom-left-radius:3px;box-shadow:-1px 1px 3px 1px rgba(51,51,51,.75);text-rendering:optimizeLegibility!important;-webkit-font-smoothing:antialiased!important;z-index:999}#stikala>*{cursor:pointer}	</style>
 	<style>
 		#vsebina {
 			background-color: rgba(125,125,125,0.5);
@@ -107,52 +16,7 @@
 		}
 	</style>
 	<script>
-		function $$(id){
-			return document.getElementById(id);
-		}
-		function zamenjajSlog(vrsta) {
-			var rotacija, naprave, list = ['android','ipad','iphone6p','iwatch'], velikost;
-			if ( localStorage.getItem("naprave") == undefined || localStorage.getItem("rotacija") == undefined || localStorage.getItem("velikost") == undefined ) {
-				naprave = "0";
-				rotacija = "landscape";
-				veliskot = "16";
-				localStorage.setItem("naprave", naprave);
-				localStorage.setItem("rotacija", rotacija);
-				localStorage.setItem("velikost", 16);
-			} else {
-				if( vrsta == 'rotacijo' ){
-					rotacija = localStorage.getItem("rotacija");
-					if( rotacija == 'landscape' ){
-						localStorage.setItem("rotacija", "portrait");
-						$$("landscape").checked = true;
-					}else{
-						localStorage.setItem("rotacija", "landscape");
-						$$("portrait").checked = true;
-					}
-				}else if( vrsta == 'napravo' ){
-					naprave = $$("naprave").value;
-					localStorage.setItem("naprave", naprave);
-				}else if( vrsta == 'pomanjsaj' ){
-					if( localStorage.getItem("velikost") > 2 ){
-						velikost = ( localStorage.getItem("velikost") * 1 ) - 2;
-						localStorage.setItem("velikost", velikost);
-					}
-				}else if( vrsta == 'povecaj' ){
-					if( localStorage.getItem("velikost") < 30 ){
-						velikost = ( localStorage.getItem("velikost") * 1 ) + 2;
-						localStorage.setItem("velikost", velikost);
-					}
-				}else if( vrsta == 'reset' ){
-					velikost = '16';
-					localStorage.setItem("velikost", velikost);
-				}
-				rotacija = localStorage.getItem("rotacija");
-				naprave = localStorage.getItem("naprave");
-			}
-			$$('naprave').getElementsByTagName('option')[naprave].selected = 'selected';
-			$$("naprava").className = ( list[naprave] + '-' + rotacija );
-			$$('naprava').style.fontSize = localStorage.getItem("velikost")+'px';
-		}
+		function $$(e){return document.getElementById(e)}function zamenjajSlog(e){var a,t,o,l=["android","ipad","iphone6p","iwatch"];void 0==localStorage.getItem("naprave")||void 0==localStorage.getItem("rotacija")||void 0==localStorage.getItem("velikost")?(t="0",a="landscape",veliskot="16",localStorage.setItem("naprave",t),localStorage.setItem("rotacija",a),localStorage.setItem("velikost",16)):("rotacijo"==e?(a=localStorage.getItem("rotacija"),"landscape"==a?(localStorage.setItem("rotacija","portrait"),$$("landscape").checked=!0):(localStorage.setItem("rotacija","landscape"),$$("portrait").checked=!0)):"napravo"==e?(t=$$("naprave").value,localStorage.setItem("naprave",t)):"pomanjsaj"==e?localStorage.getItem("velikost")>2&&(o=1*localStorage.getItem("velikost")-2,localStorage.setItem("velikost",o)):"povecaj"==e?localStorage.getItem("velikost")<30&&(o=1*localStorage.getItem("velikost")+2,localStorage.setItem("velikost",o)):"reset"==e&&(o="16",localStorage.setItem("velikost",o)),a=localStorage.getItem("rotacija"),t=localStorage.getItem("naprave")),$$("naprave").getElementsByTagName("option")[t].selected="selected",$$("naprava").className=l[t]+"-"+a,$$("naprava").style.fontSize=localStorage.getItem("velikost")+"px"}
 	</script>
 </head>
 <body onload="zamenjajSlog('reload')">
