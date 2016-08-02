@@ -6,175 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Aplikacija</title>
 	<style>
-		html, body {
-			margin: 0;
-			padding: 0;
-			width: 100%;
-			height: 99%;
-			font-family: sans-serif;
-			font-size: 16px;
-		}
-		#naprava {
-			background-size: contain;
-			background-position: top center;
-			margin: 0 auto;
-			background-repeat: no-repeat;
-			box-sizing: border-box;
-			margin-top: 10px;
-			overflow: hidden;
-		}
-		.ipad-landscape {
-			width: 103em;
-			height: 72.875em;
-			background-image: url('./img/ipad-landscape.png');
-			padding: 1.875em 8.75em 1.875em 9.375em;
-		}
-		.ipad-portrait {
-			width: 72.875em;
-			height: 103em;
-			background-image: url('./img/ipad-portrait.png');
-			padding: 8.75em 1.875em 9.375em 1.875em;
-		}
-		.android-portrait {
-			width: 37.9375em;
-			height: 75.375em;
-			background-image: url('./img/android-portrait.png');
-			padding: 9.36em 1.875em 5em 1.875em;
-		}
-		.android-landscape {
-			width: 75.375em;
-			height: 37.9375em;
-			background-image: url('./img/android-landscape.png');
-			padding: 1.875em 9.36em 1.875em 5em;
-		}
-		.iphone6p-portrait {
-			width: 35.6875em;
-			height: 72.75em;
-			background-image: url('./img/iphone6p-portrait.png');
-			padding: 8.125em 1.875em 9.375em 1.875em;
-		}
-		.iphone6p-landscape {
-			width: 72.75em;
-			height: 35.6875em;
-			background-image: url('./img/iphone6p-landscape.png');
-			padding: 1.875em 8.125em 1.875em 9.375em;
-		}
-		.iwatch-portrait {
-			width: 19.5625em;
-			height: 34.25em;
-			background-image: url('./img/iwatch-portrait.png');
-			padding: 9.375em 4.0625em 9.375em 2.8125em;
-		}
-		.iwatch-landscape {
-			width: 34.25em;
-			height: 19.5625em;
-			background-image: url('./img/iwatch-landscape.png');
-			padding: 2.8125em 9.375em 4.0625em 9.375em;
-		}
-		#vsebina {
-			width: 100%;
-			height: 100%;
-			overflow-y: auto;
-			box-sizing: border-box;
-			-moz-box-shadow: inset 0 -1px 1px 2px rgba(0,0,0,0.5);
-			-webkit-box-shadow: inset 0 -1px 1px 2px rgba(0,0,0,0.5);
-			box-shadow: inset 0 -1px 1px 2px rgba(0,0,0,0.5);
-			background-color: rgba(125,125,125,0.5);
-			color: white;
-			padding: 10px;
-			text-align: center;
-			border: 0;
-			border: none;
-		  overflow-x:hidden;
-  		overflow-Y:hidden;
-		}
-		#portrait, #landscape, #landscape-lbl, .preloader {
-			display: none;
-		}
-		#stikala {
-			position: fixed;
-			top: 0;
-			right: 0;
-			padding: 5px 4px;
-			background-color: white;
-			border-bottom-left-radius: 3px;
-			box-shadow:-1px 1px 3px 1px rgba(51,51,51, 0.75);
-			text-rendering: optimizeLegibility !important;
-			-webkit-font-smoothing: antialiased !important;
-			z-index: 999;
-		}
-		#stikala > * {
-			cursor: pointer;
-		}
-		#url {
-			width: 100px;
-		}
-		#globe {
-			top: 6px;
-			left: 88px;
-			position: absolute;
-			background-color: white;
-			padding: 4px 0 4px 5px;
-		}
+		#naprava,#vsebina{box-sizing:border-box}#globe,#stikala{background-color:#fff}body,html{margin:0;padding:0;width:100%;height:99%;font-family:sans-serif;font-size:16px}#naprava{background-size:contain;background-position:top center;margin:10px auto 0;background-repeat:no-repeat;overflow:hidden}.ipad-landscape{width:103em;height:72.875em;background-image:url(img/ipad-landscape.png);padding:1.875em 8.75em 1.875em 9.375em}.ipad-portrait{width:72.875em;height:103em;background-image:url(img/ipad-portrait.png);padding:8.75em 1.875em 9.375em}.android-portrait{width:37.9375em;height:75.375em;background-image:url(img/android-portrait.png);padding:9.36em 1.875em 5em}.android-landscape{width:75.375em;height:37.9375em;background-image:url(img/android-landscape.png);padding:1.875em 9.36em 1.875em 5em}.iphone6p-portrait{width:35.6875em;height:72.75em;background-image:url(img/iphone6p-portrait.png);padding:8.125em 1.875em 9.375em}.iphone6p-landscape{width:72.75em;height:35.6875em;background-image:url(img/iphone6p-landscape.png);padding:1.875em 8.125em 1.875em 9.375em}.iwatch-portrait{width:19.5625em;height:34.25em;background-image:url(img/iwatch-portrait.png);padding:9.375em 4.0625em 9.375em 2.8125em}.iwatch-landscape{width:34.25em;height:19.5625em;background-image:url(img/iwatch-landscape.png);padding:2.8125em 9.375em 4.0625em}#vsebina{width:100%;height:100%;overflow-y:auto;-moz-box-shadow:inset 0 -1px 1px 2px rgba(0,0,0,.5);-webkit-box-shadow:inset 0 -1px 1px 2px rgba(0,0,0,.5);box-shadow:inset 0 -1px 1px 2px rgba(0,0,0,.5);background-color:rgba(125,125,125,.5);color:#fff;padding:10px;text-align:center;border:0;border:none;overflow-x:hidden;overflow-Y:hidden}#landscape,#landscape-lbl,#portrait,.preloader{display:none}#stikala{position:fixed;top:0;right:0;padding:5px 4px;border-bottom-left-radius:3px;box-shadow:-1px 1px 3px 1px rgba(51,51,51,.75);text-rendering:optimizeLegibility!important;-webkit-font-smoothing:antialiased!important;z-index:999}#stikala>*{cursor:pointer}#url{width:100px}#globe{top:6px;left:88px;position:absolute;padding:4px 0 4px 5px}
 	</style>
 	<script>
-		function $$(id){
-			return document.getElementById(id);
-		}
-		function zamenjajSlog(vrsta) {
-			var rotacija, naprave, list = ['android','ipad','iphone6p','iwatch'], velikost;
-			if ( localStorage.getItem("naprave") == undefined || localStorage.getItem("rotacija") == undefined || localStorage.getItem("velikost") == undefined ) {
-				naprave = "0";
-				rotacija = "landscape";
-				veliskot = "16";
-				localStorage.setItem("naprave", naprave);
-				localStorage.setItem("rotacija", rotacija);
-				localStorage.setItem("velikost", 16);
-			} else {
-				if( vrsta == 'rotacijo' ){
-					rotacija = localStorage.getItem("rotacija");
-					if( rotacija == 'landscape' ){
-						localStorage.setItem("rotacija", "portrait");
-						$$("landscape").checked = true;
-					}else{
-						localStorage.setItem("rotacija", "landscape");
-						$$("portrait").checked = true;
-					}
-				}else if( vrsta == 'napravo' ){
-					naprave = $$("naprave").value;
-					localStorage.setItem("naprave", naprave);
-				}else if( vrsta == 'pomanjsaj' ){
-					if( localStorage.getItem("velikost") > 2 ){
-						velikost = ( localStorage.getItem("velikost") * 1 ) - 2;
-						localStorage.setItem("velikost", velikost);
-					}
-				}else if( vrsta == 'povecaj' ){
-					if( localStorage.getItem("velikost") < 30 ){
-						velikost = ( localStorage.getItem("velikost") * 1 ) + 2;
-						localStorage.setItem("velikost", velikost);
-					}
-				}else if( vrsta == 'reset' ){
-					velikost = '16';
-					localStorage.setItem("velikost", velikost);
-				}
-				rotacija = localStorage.getItem("rotacija");
-				naprave = localStorage.getItem("naprave");
-			}
-			$$('naprave').getElementsByTagName('option')[naprave].selected = 'selected';
-			$$("naprava").className = ( list[naprave] + '-' + rotacija );
-			$$('naprava').style.fontSize = localStorage.getItem("velikost")+'px';
-		}
-		function url(){
-			var url = $$("url").value;
-			if( url != '' && url.match(/^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$/) ){
-				$$("vsebina").src = url;
-			}
-		}
+		function $$(a){return document.getElementById(a)}function zamenjajSlog(a){var b,c,e,d=["android","ipad","iphone6p","iwatch"];void 0==localStorage.getItem("naprave")||void 0==localStorage.getItem("rotacija")||void 0==localStorage.getItem("velikost")?(c="0",b="landscape",veliskot="16",localStorage.setItem("naprave",c),localStorage.setItem("rotacija",b),localStorage.setItem("velikost",16)):("rotacijo"==a?(b=localStorage.getItem("rotacija"),"landscape"==b?(localStorage.setItem("rotacija","portrait"),$$("landscape").checked=!0):(localStorage.setItem("rotacija","landscape"),$$("portrait").checked=!0)):"napravo"==a?(c=$$("naprave").value,localStorage.setItem("naprave",c)):"pomanjsaj"==a?localStorage.getItem("velikost")>2&&(e=1*localStorage.getItem("velikost")-2,localStorage.setItem("velikost",e)):"povecaj"==a?localStorage.getItem("velikost")<30&&(e=1*localStorage.getItem("velikost")+2,localStorage.setItem("velikost",e)):"reset"==a&&(e="16",localStorage.setItem("velikost",e)),b=localStorage.getItem("rotacija"),c=localStorage.getItem("naprave")),$$("naprave").getElementsByTagName("option")[c].selected="selected",$$("naprava").className=d[c]+"-"+b,$$("naprava").style.fontSize=localStorage.getItem("velikost")+"px"}function url(){var a=$$("url").value;""!=a&&a.match(/^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$/)&&($$("vsebina").src=a)}
 	</script>
 </head>
 <body onload="zamenjajSlog('reload')">
 	<div id="stikala">
-			<input id="url" type="text" placeholder="URL" onclick="this.select();">
+			<input id="url" type="text" placeholder="Odpri URL" onclick="this.select();">
 			<img id="globe" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAMAAABFNRROAAABrVBMVEUAAAAdHR00NDQ+Pj5BQUFVVVVXV1dnZ2dra2tvb2+Hh4eIiIiQkJCkpKS6urr///8AAABlZmZKS0tbW1tqampdYGBERERjY2NHR0eBgoJNTU0BAQFdXV2pqamGiIiam5vIyMjMzc1oaGhTU1NaWVlcXFy7vb4bGxsXFxfi4uJzcnI2NzjX19dycnKmqKknKCiOj4/09fUvMDBMTU0AAAACAgECAgICAwMFBQUPEBASExMkJCQrKyo1NTU3NjY5Ojs/Pz9BQUFDQ0NHR0dNTk9WVlZZWVlZXF5dXl5mZmZnZ2ZpaWlrbG1tb3BvcXJ4eXl4fH6AgICIiouSkpKhoaGjpaWvs7awsbGxsbGyt7m3t7e4ury7u7y7vb6/wMHAwcHAwsTDxsjGyMnGycvHx8jIzM/JzM/Ky8vLy8vM0NPO0tTQ0dPS1NPU19rV19nV2tzV3ODX293Y2trY3N7Y3uPZ2tra29zc3d3e4uTh5ebi4+Pk6Orl6e3p7/Pq7O3s7e3s7vDt7e3t7+/u7+/v8PDx8vLx8vPy8vPy8/T29/f4+fn5+/v7/Pz+///////IWiEtAAAANHRSTlMAAAAAAAAAAAAAAAAAAAAAIykzQURHS1F+go2TlJWdoKKoqa20tL7D3N3f4OPk7/Ly8vP6g8bVyQAAALZJREFUCNcFwTkOgkAUANA/f0YYGBAwkWhcCmNlo4WFF9PjeB8LO2uXKC5ogDgoiyy+RwCgJQz+i2VgEgbQXQLcmkKuA0Khs4pDH0Hli52k9rz0IhyaUOJ0ywR51dqkTnJecYeZxVuIDTdEbQNneqKYgyCq2sGlarAM3Zk/xus5PSoF1exccPkl1jUqPhR7H+/pFPr9VioezbN+mqLbOKXqw6f4zUa1OtxX2sFjhAJaTa6UiQwR/xIBTHb0APmJAAAAAElFTkSuQmCC" alt="Odpri URL" title="Odpri URL" onclick="url();">
 		<select id="naprave" onchange="zamenjajSlog('napravo')">
 			<option value="0">Android</option>
@@ -190,7 +30,7 @@
   	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAQAAAADWYbVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOhJREFUKM9tzz0vQwEUgOGnohWx2KSDkaWTNBgEU3dWBonBxmQRMZFY/Qprp4bJYJCIH0BF2HwuaNMPaRyDG+5N+m7PyRnOyfmvahTL3vsoVVlbV9daH2U6FEK46qNUA96EU6FnMtFFokwVIUxrCruJ5jSFnexiTbhFVairCTeJHtJrY7rCNhaEZ11hL1GY/b0NlhRwp6Slp66AeyUtHWxBDlyawYlhPSWPyqgZ0bMor63oAyaE8KKhoeFMJ6Un38Iqg9jAl32fCBVDf4ID41Yck/cqnP89dp0RR0JLkSkhbCbjrGBeCOs/Gnhx3I45LskAAAAASUVORK5CYII=" onclick="zamenjajSlog('reset')" alt="16px" title="Ponastavi velikost">
   	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMZJREFUeNpiZMAO5gOxApSdCMQPGCgABkD8Hwk3MFAI5qMZeJ8SwwSA+D3UIGSDA8g1MAHJEFAYnoey1+NRl4DPQJgB+6H8AjQLYGA/kvh5YiIDZqsClshRQArb+1C2AcwQJiQD85HYH4DYAar5AlQsHk3dQiCeiCaHNTLw4QAkdQpIrn0PM4gRKZDnQ9kHcASHANTlAjiCDJQBFqBHBq4014/m0vPQiNmPJSJRIqOBiAh7j8WVyMGAYrsCEUnqPp7c1QAQYAA/G1l1WjcY+gAAAABJRU5ErkJggg==" onclick="zamenjajSlog('povecaj')" alt="+" alt="Povečaj +">
 
-  	<a href="/aplikacije/app.dev/app.zip" title="Prenesi datoteke" download><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAANCAMAAACTkM4rAAAArlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeyFOlAAAAOXRSTlMAAgQGCQ0fJScoKjA8PkBDRElNT1FbXmNmc3V4eXt/g4iJkJGboK+6zc/U1trb3d7n6+zv8PLz+vv4J2oJAAAAeklEQVR4AV3I5dKCQACG0ecLxe4QsBs7RH3v/8ZcdnbGgfPz4ERxfPoj5Sq9M7WXLnz9VAr5s3TzvOovTl9OgPNf9GVNSjmsjpY0ZXSZqYcx0gKoSW1grCms9AqHQL0FBP5Ta5RoYJWVYCvjOLd2Mg5slBExuMcpj/AD3aQZNe6sJCkAAAAASUVORK5CYII=" alt="Prenesi datoteke"></a>
+  	<a href="./app.zip" title="Prenesi datoteke" download><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAANCAMAAACTkM4rAAAArlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeyFOlAAAAOXRSTlMAAgQGCQ0fJScoKjA8PkBDRElNT1FbXmNmc3V4eXt/g4iJkJGboK+6zc/U1trb3d7n6+zv8PLz+vv4J2oJAAAAeklEQVR4AV3I5dKCQACG0ecLxe4QsBs7RH3v/8ZcdnbGgfPz4ERxfPoj5Sq9M7WXLnz9VAr5s3TzvOovTl9OgPNf9GVNSjmsjpY0ZXSZqYcx0gKoSW1grCms9AqHQL0FBP5Ta5RoYJWVYCvjOLd2Mg5slBExuMcpj/AD3aQZNe6sJCkAAAAASUVORK5CYII=" alt="Prenesi datoteke"></a>
 
 		<img class="preloader" src='./img/android-portrait.png' alt="">
 		<img class="preloader" src='./img/android-landscape.png' alt="">
